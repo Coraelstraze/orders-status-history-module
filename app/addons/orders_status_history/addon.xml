@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>orders_status_history</id>
+    <name>Orders status history</name>
+    <description>View of status history table in admin-panel</description>
+    <version>1.0</version>
+    <priority>999</priority>
+    <position>0</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <default_language>en</default_language>
+    <translations>
+        <item for="name" lang="ru">История статусов заказов</item>
+        <item for="description" lang="ru">Отображение таблицы статусов заказов в админке</item>
+    </translations>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:orders_status_history;</item>
+        <item>
+            CREATE TABLE `?:orders_status_history` (
+                `order_id` mediumint(8) unsigned NOT NULL,
+                `status_from` char(1) NOT NULL default 'A',
+                `status_to` char(1) NOT NULL default 'A',
+                `user` mediumint(8) NOT NULL,
+                `timestamp` int(11) unsigned NOT NULL default '0'
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:orders_status_history;</item>
+    </queries>
+</addon>
