@@ -35,7 +35,7 @@ function fn_get_orders_status_history($params = array(), $items_per_page = 0)
         'user' => array('u.lastname', 'u.firstname'),
     );
     
-    $join = db_quote("LEFT JOIN ?:users u ON u.user_id = h.user");
+    $join = db_quote('LEFT JOIN ?:users u ON u.user_id = h.user');
 
     $fields_str = implode(', ', $fields);
     $sorting_str = db_sort($params, $sortings, 'date', 'desc');
@@ -43,14 +43,14 @@ function fn_get_orders_status_history($params = array(), $items_per_page = 0)
     $limit = '';
     if (!empty($params['items_per_page'])) {
         $params['total_items'] = db_get_field(
-            "SELECT COUNT(*) FROM ?:orders_status_history h " . $join
+            'SELECT COUNT(*) FROM ?:orders_status_history h ' . $join
         );
         $limit = db_paginate($params['page'], $params['items_per_page'], $params['total_items']);
     }
 
     $items = db_get_array(
-        "SELECT " . $fields_str
-        . " FROM ?:orders_status_history h "
+        'SELECT ' . $fields_str
+        . ' FROM ?:orders_status_history h '
         . $join
         . $sorting_str
         . $limit
@@ -77,5 +77,5 @@ function fn_orders_status_history_change_order_status_post($order_id, $status_to
         'user' => $_SESSION['auth']['user_id'],
         'timestamp' => TIME
     );
-    $status_id = db_query("INSERT INTO ?:orders_status_history ?e", $_data);
+    $status_id = db_query('INSERT INTO ?:orders_status_history ?e', $_data);
 }
