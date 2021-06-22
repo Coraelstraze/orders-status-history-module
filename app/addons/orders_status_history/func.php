@@ -1,8 +1,6 @@
 <?php
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
-use Tygh\Navigation\LastView;
-
 function fn_orders_status_history_change_order_status_post($order_id, $status_to, $status_from, $force_notification, $place_order, $order_info, $edp_data) 
 {
     $_data = array (
