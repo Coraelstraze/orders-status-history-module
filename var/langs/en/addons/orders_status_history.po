@@ -8,6 +8,10 @@ msgctxt "Addons::name::orders_status_history"
 msgid "Orders status history"
 msgstr "Orders status history"
 
+msgctxt "Addons::description::orders_status_history"
+msgid "History of orders status changes"
+msgstr "History of orders status changes"
+
 msgctxt "Languages::orders_status_history"
 msgid "Orders status history"
 msgstr "Orders status history"

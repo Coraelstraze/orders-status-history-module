@@ -8,10 +8,6 @@
     <position>0</position>
     <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
     <default_language>en</default_language>
-    <translations>
-        <item for="name" lang="ru">История статусов заказов</item>
-        <item for="description" lang="ru">Отображение таблицы статусов заказов в админке</item>
-    </translations>
     <queries>
         <item>DROP TABLE IF EXISTS ?:orders_status_history;</item>
         <item>

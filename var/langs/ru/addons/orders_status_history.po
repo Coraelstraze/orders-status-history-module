@@ -6,6 +6,10 @@ msgstr ""
 
 msgctxt "Addons::name::orders_status_history"
 msgid "Orders status history"
+msgstr "История статусов заказов"
+
+msgctxt "Addons::description::orders_status_history"
+msgid "History of orders status changes"
 msgstr "История изменения статусов заказов"
 
 msgctxt "Languages::orders_status_history"

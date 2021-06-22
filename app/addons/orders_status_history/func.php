@@ -1,18 +1,14 @@
 <?php
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
-function fn_orders_status_history_change_order_status_post($order_id, $status_to, $status_from, $force_notification, $place_order, $order_info, $edp_data) 
-{
-    $_data = array (
-        'order_id' => $order_id,
-        'status_from' => $status_from,
-        'status_to' => $status_to,
-        'user' => $_SESSION['auth']['user_id'],
-        'timestamp' => TIME
-    );
-    $status_id = db_query("INSERT INTO ?:orders_status_history ?e", $_data);
-}
-
+/**
+ * Gets orders status history
+ *
+ * @param array  $params         Orders status history search params
+ * @param int    $items_per_page Items per page
+ *
+ * @return array Orders status history list and Search params
+ */
 function fn_get_orders_status_history($params = array(), $items_per_page = 0)
 {
     
@@ -61,4 +57,25 @@ function fn_get_orders_status_history($params = array(), $items_per_page = 0)
     );
 
     return array($items, $params);
+}
+
+/**
+ * Add orders status history logs to database
+ *
+ * @param int       $order_id      Order identificator
+ * @param string    $status_to     Previous order status
+ * @param string    $status_from   New order status
+ * 
+ * @return void
+ */
+function fn_orders_status_history_change_order_status_post($order_id, $status_to, $status_from) 
+{
+    $_data = array (
+        'order_id' => $order_id,
+        'status_from' => $status_from,
+        'status_to' => $status_to,
+        'user' => $_SESSION['auth']['user_id'],
+        'timestamp' => TIME
+    );
+    $status_id = db_query("INSERT INTO ?:orders_status_history ?e", $_data);
 }
